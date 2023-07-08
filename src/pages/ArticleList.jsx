@@ -17,8 +17,12 @@ const ArticleList = () => {
     dispatch(setArticleData(articles.nodes));
   }, []);
 
+  const handleErr = (err) => {
+    dispatch(setPageNumber(pageNo + 1));
+  };
+
   useEffect(() => {
-    fetchArticle(pageNo, updateArticles);
+    fetchArticle(pageNo, updateArticles, handleErr);
   }, [pageNo, updateArticles]);
 
   const onScroll = () => {
